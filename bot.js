@@ -4,7 +4,6 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`-help | -invite`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -46,20 +45,25 @@ client.on('ready',  () => {
 })
 
 
-client.on('ready', () => {
-   console.log(`----------------`);
-      console.log(`Desert Bot- Script By : i1Suhaib`);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : i1Suhaib ' `);
-    console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` -help | -invite`,"http://twitch.tv/S-F")
-client.user.setStatus("dnd")
-});
-client.on("guildCreate", guild => {
-  console.log(` Join Bot Of Server ${guild.name} Owner Of Server ${guild.owner.user.username}!`)
-});
 
+
+client.on('ready', function(){//npm i ms 
+    var ms = 60000 ;
+    var setGame = [`-help`,'-invite','Bot by DaHoM','-help | -invite'];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`http://www.twitch.tv/v5bz`);
+    }, ms);
+
+});
 
 
 
